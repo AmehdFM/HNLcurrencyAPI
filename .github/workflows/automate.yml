@@ -20,7 +20,11 @@ jobs:
         cache: 'pip'
 
     - name: Instalar dependencias
-      run: pip install requests supabase python-dotenv
+      run: |
+        pip install
+        pip requests
+        pip supabase
+        pip python-dotenv
     
     - name: revision de paquetes
       run: |
