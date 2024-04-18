@@ -4,6 +4,7 @@ from datetime import date, datetime
 from supabase import create_client
 from dotenv import load_dotenv
 
+
 # Cargar variables de entorno
 load_dotenv()
 API_KEY = os.getenv("CURRENCY_API_KEY")
