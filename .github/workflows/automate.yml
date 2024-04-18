@@ -18,13 +18,14 @@ jobs:
       with:
         python-version: '3.10'  # Especifica la versión de Python que necesitas
 
-    -run: |
-      pip list
-
     - name: Instalar dependencias
       run: |
         pip install requests
 
+    - name: revision de paquetes
+      run: |
+        pip list
+        
     - name: Ejecutar script
       run: python ./script.py  # Reemplaza 'script.py' con el nombre de tu script
       env:
