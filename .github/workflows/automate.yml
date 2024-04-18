@@ -18,5 +18,9 @@ jobs:
       with:
         python-version: '3.10'  # Especifica la versión de Python que necesitas
 
+    - name: Instalar dependencias
+      run: |
+        pip install -r requirements.txt  # Asegúrate de que esto esté actualizado según tus necesidades
+
     - name: Ejecutar script
       run: python ./script.py  # Reemplaza 'script.py' con el nombre de tu script
