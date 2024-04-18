@@ -21,10 +21,9 @@ jobs:
 
     - name: Instalar dependencias
       run: |
-        pip install
-        pip requests
-        pip supabase
-        pip python-dotenv
+        pip install requests
+        pip install supabase
+        pip install python-dotenv
     
     - name: revision de paquetes
       run: |
@@ -34,5 +33,5 @@ jobs:
       run: python ./script.py  # Reemplaza 'script.py' con el nombre de tu script
       env:
         CURRENCY_API_KEY: ${{ secrets.CURRENCY_API_KEY }}  # Asegúrate de que el nombre de la variable de entorno sea el correcto
-        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-        SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        SUPABASE_URL: ${{ secrets.SUPABASEURL }}
+        SUPABASE_KEY: ${{ secrets.SUPABASEKEY }}
