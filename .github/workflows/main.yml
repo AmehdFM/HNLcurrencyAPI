@@ -1,0 +1,30 @@
+name: Ejecutar script diariamente
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # Ejecutar el script todos los días a las 00:00 UTC
+
+jobs:
+  ejecutar-script:
+    name: Ejecutar script
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del repositorio
+      uses: actions/checkout@v2
+      
+    - name: Configurar Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Especifica la versión de Python que necesitas
+        
+    - name: Instalar dependencias
+      run: |
+        pip install -r requirements.txt  # Asegúrate de que esto esté actualizado según tus necesidades
+
+    - name: Ejecutar script
+      run: python script.py  # Reemplaza 'script.py' con el nombre de tu script
+      env:
+        CURRENCY_API_KEY: ${{ secrets.CURRENCY_API_KEY }}  # Asegúrate de que el nombre de la variable de entorno sea el correcto
+        SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+        SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
