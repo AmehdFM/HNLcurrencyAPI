@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Depends
 from fastapi.exceptions import HTTPException
-from sqlalchemy.orm import Session
 import datetime
 
 from database.db import supabase  # Importar el cliente de Supabase desde db.py
