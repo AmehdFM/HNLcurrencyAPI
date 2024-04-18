@@ -20,7 +20,7 @@ jobs:
         cache: 'pip'
 
     - name: Instalar dependencias
-      run: pip install -r requirements.txt
+      run: pip install requests supabase python-dotenv
     
     - name: revision de paquetes
       run: |
