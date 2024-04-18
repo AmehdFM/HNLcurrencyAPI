@@ -20,7 +20,7 @@ jobs:
 
     - name: Instalar dependencias
       run: |
-        pip install requests supabase python-dotenv
+        pip install requests
 
     - name: Ejecutar script
       run: python ./script.py  # Reemplaza 'script.py' con el nombre de tu script
