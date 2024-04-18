@@ -34,4 +34,8 @@ jobs:
       env:
         CURRENCY_API_KEY: ${{ secrets.CURRENCY_API_KEY }}  # Asegúrate de que el nombre de la variable de entorno sea el correcto
         supabaseURL: ${{ secrets.SUPABASEURL }}
+<<<<<<< HEAD
         supabaseKEY: ${{ secrets.SUPABASEKEY }}
+=======
+        supabaseKEY: ${{ secrets.SUPABASEKEY }}
+>>>>>>> 99a4c06eecc927303229d50ca1fd1c3cfecac670
