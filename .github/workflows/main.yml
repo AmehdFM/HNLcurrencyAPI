@@ -11,12 +11,12 @@ jobs:
 
     steps:
     - name: Checkout del repositorio
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       
     - name: Configurar Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.x'  # Especifica la versión de Python que necesitas
+        python-version: '3.10'  # Especifica la versión de Python que necesitas
         
     - name: Instalar dependencias
       run: |
