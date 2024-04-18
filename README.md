@@ -1,24 +1,73 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fhello-world&demo-title=Python%20Hello%20World&demo-description=Use%20Python%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fpython-hello-world.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994600/random/python.png)
+# HNLcurrencyAPI
 
-# Python Hello World
+Esta API esta destinada para el monitoreo y conversion de diferentes divisas con respecto al Lempira hondureño (HNL).
+Los precios son extraidos de [currencyapi](https://app.currencyapi.com/)
+El proyecto esta desplegado en vercel.
 
-This example shows how to use Python on Vercel with Serverless Functions using the [Python Runtime](https://vercel.com/docs/concepts/functions/serverless-functions/runtimes/python).
+## Monedas Soportadas
 
-## Demo
+Monedas las cuales tienen un seguimiento:
+- SVC (Colon Salvadoreño)
+- USD (Dólar Estadounidense)
+- EUR (Euro)
+- CRC (Colón Costarricense)
+- GTQ (Quetzal Guatemalteco)
+- NIO (Córdoba Nicaragüense)
+- CNY (Yuan Chino)
+- RUB (Rublo Ruso)
 
-https://python-hello-world.vercel.app/
+## Endpoints
 
-## Running Locally
+### Obtener Historial de Divisas
 
-```bash
-npm i -g vercel
-vercel dev
-```
+Este endpoint permite obtener el historial de una divisa dentro de un rango de fechas.
 
-Your Python API is now available at `http://localhost:3000/api`.
+- **URL**: `/historial/{divisa}/{fecha_inicio}/{fecha_fin}`
+- **Método HTTP**: GET
+- **Parámetros de la URL**:
+  - `divisa` (str): La abreviatura de la divisa deseada (por ejemplo, USD).
+  - `fecha_inicio` (str): La fecha de inicio del rango en formato YYYY-MM-DD.
+  - `fecha_fin` (str): La fecha de fin del rango en formato YYYY-MM-DD.
+- **Respuesta Exitosa**:
+  - Código de Estado: 200 OK
+  - Tipo de Contenido: application/json
+  - Cuerpo de la Respuesta: Lista de registros de historial de la divisa.
 
-## One-Click Deploy
+### Obtener Historial por Divisa
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=vercel-examples):
+Este endpoint permite obtener el historial completo de una divisa.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fexamples%2Ftree%2Fmain%2Fpython%2Fhello-world&demo-title=Python%20Hello%20World&demo-description=Use%20Python%20on%20Vercel%20with%20Serverless%20Functions%20using%20the%20Python%20Runtime.&demo-url=https%3A%2F%2Fpython-hello-world.vercel.app%2F&demo-image=https://assets.vercel.com/image/upload/v1669994600/random/python.png)
+- **URL**: `/historial/{divisa}`
+- **Método HTTP**: GET
+- **Parámetros de la URL**:
+  - `divisa` (str): La abreviatura de la divisa deseada (por ejemplo, EUR).
+- **Respuesta Exitosa**:
+  - Código de Estado: 200 OK
+  - Tipo de Contenido: application/json
+  - Cuerpo de la Respuesta: Lista de registros de historial de la divisa.
+
+### Obtener Todos los Datos
+
+Este endpoint permite obtener todos los datos de la tabla historial_divisas.
+
+- **URL**: `/datos`
+- **Método HTTP**: GET
+- **Respuesta Exitosa**:
+  - Código de Estado: 200 OK
+  - Tipo de Contenido: application/json
+  - Cuerpo de la Respuesta: Lista de todos los datos de historial_divisas.
+
+### Convertir Monedas
+
+Este endpoint permite realizar conversiones entre monedas. Solo se admiten conversiones entre Lempiras (HNL) y otras divisas o viceversa. La tasa de cambio utilizada es la más reciente disponible en la base de datos.
+
+- **URL**: `/convertir`
+- **Método HTTP**: GET
+- **Parámetros de consulta**:
+  - `moneda_origen` (str): La abreviatura de la moneda de origen. Puede ser "HNL" (Lempiras) o la abreviatura de otra divisa.
+  - `moneda_destino` (str): La abreviatura de la moneda de destino. Puede ser "HNL" (Lempiras) o la abreviatura de otra divisa.
+  - `cantidad` (float): La cantidad de la moneda de origen que se desea convertir.
+- **Respuesta Exitosa**:
+  - Código de Estado: 200 OK
+  - Tipo de Contenido: application/json
+  - Cuerpo de la Respuesta: La cantidad de la moneda de destino que se puede comprar con la cantidad ingresada de la moneda de origen.
